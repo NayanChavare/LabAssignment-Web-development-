@@ -1,0 +1,234 @@
+/* --- Global Styles & Variables [cite: 42, 43] --- */
+:root {
+    --primary-color: #0056b3; /* Blue theme based on screenshot */
+    --secondary-color: #f4f4f4;
+    --text-color: #333;
+    --accent-color: #ff5722;
+    --font-main: 'Poppins', sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-main); /* [cite: 41] */
+    line-height: 1.6;
+    color: var(--text-color);
+}
+
+/* Using relative units (rem, %) for spacing [cite: 7, 38] */
+.container {
+    width: 90%;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 2rem 0;
+}
+
+h2 {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+    color: #222;
+}
+
+/* --- Header (Flexbox)  --- */
+header {
+    background-color: var(--primary-color);
+    color: #fff;
+    padding: 1rem 0;
+}
+
+.nav-flex {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0; /* Override container padding for header */
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+}
+
+nav ul li {
+    margin-left: 1.5rem;
+}
+
+nav a {
+    color: #fff;
+    text-decoration: none;
+    transition: color 0.3s ease; /* Smooth transition [cite: 8] */
+}
+
+nav a:hover {
+    color: #ffd700; /* Hover effect [cite: 8, 45] */
+}
+
+/* --- Hero Section (Flexbox)  --- */
+#hero {
+    background-color: var(--secondary-color);
+    min-height: 80vh; /* Relative unit vh  */
+    display: flex;
+    align-items: center;
+}
+
+.hero-flex {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.hero-text {
+    flex: 1;
+}
+
+.hero-text h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+/* Keyframe Animation for Color Change [cite: 8, 43, 80] */
+.animated-text {
+    font-weight: 700;
+    animation: colorChange 3s infinite alternate;
+}
+
+@keyframes colorChange {
+    0% { color: var(--accent-color); }
+    100% { color: var(--primary-color); }
+}
+
+.hero-image {
+    flex: 1;
+    text-align: center;
+}
+
+.hero-image img {
+    width: 300px;
+    border-radius: 50%;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+/* Button Styles with Transform [cite: 20] */
+.btn {
+    display: inline-block;
+    background-color: var(--primary-color);
+    color: #fff;
+    padding: 0.8rem 1.5rem;
+    text-decoration: none;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.btn:hover {
+    background-color: #004494;
+    transform: scale(1.05); /* Transform effect on hover [cite: 20] */
+}
+
+/* --- Sections: About, Skills, Projects --- */
+section {
+    padding: 3rem 0;
+}
+
+/* Grid Layout for Skills and Projects  */
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+}
+
+/* Card Styles & Hover Effects [cite: 45] */
+.card {
+    background: #fff;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* [cite: 8] */
+}
+
+.card:hover {
+    transform: translateY(-5px); /* Interactive lift effect */
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+.skill-card {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+/* --- Contact Form [cite: 50] --- */
+#contact form {
+    max-width: 600px;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+input, textarea {
+    padding: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-family: inherit;
+}
+
+/* --- Footer [cite: 51] --- */
+footer {
+    background-color: var(--primary-color);
+    color: #fff;
+    padding: 1.5rem 0;
+    text-align: center;
+}
+
+.footer-flex {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.back-to-top {
+    color: #fff;
+    text-decoration: none;
+    font-size: 0.9rem;
+    border: 1px solid #fff;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+}
+
+/* --- Responsive Media Queries (Mobile First approach adapted) [cite: 6, 36] --- */
+@media (max-width: 768px) {
+    /* Header: Stack logo and nav */
+    .nav-flex {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    /* Hero: Stack text and image [cite: 82] */
+    .hero-flex {
+        flex-direction: column-reverse; /* Text below image or standard column */
+        text-align: center;
+    }
+    
+    .hero-text {
+        margin-top: 2rem;
+    }
+
+    .hero-text h1 {
+        font-size: 2.5rem;
+    }
+
+    /* Adjust Grid to single column if needed (auto-fit handles most, but this is safer) */
+    .grid-container {
+        grid-template-columns: 1fr;
+    }
+}
